@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A simple to-do list that saves tasks in your browser.">
+  <title>Taskly | To-do list</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="app-card" aria-labelledby="page-title">
+      <header class="app-header">
+        <div>
+          <p class="eyebrow">Your daily workspace</p>
+          <h1 id="page-title">Make it <span>happen.</span></h1>
+          <p class="subtitle">Keep your priorities clear and your momentum moving.</p>
+        </div>
+        <div class="date-badge" aria-label="Today's date">
+          <span id="day-name">TODAY</span>
+          <strong id="date-value">--</strong>
+        </div>
+      </header>
+
+      <form id="task-form" class="task-form">
+        <label class="sr-only" for="task-input">Add a new task</label>
+        <input id="task-input" type="text" maxlength="120" placeholder="What needs to be done?" autocomplete="off" required>
+        <button class="primary-button" type="submit"><span aria-hidden="true">+</span> Add task</button>
+      </form>
+
+      <div class="toolbar">
+        <div class="task-count" aria-live="polite"><strong id="remaining-count">0</strong> tasks remaining</div>
+        <div class="filters" role="group" aria-label="Filter tasks">
+          <button class="filter-button active" type="button" data-filter="all">All</button>
+          <button class="filter-button" type="button" data-filter="active">Active</button>
+          <button class="filter-button" type="button" data-filter="completed">Completed</button>
+        </div>
+      </div>
+
+      <div id="empty-state" class="empty-state">
+        <div class="empty-icon" aria-hidden="true">✦</div>
+        <h2>Nothing on your list yet</h2>
+        <p>Add a task above and take the first step.</p>
+      </div>
+      <ul id="task-list" class="task-list" aria-label="Tasks"></ul>
+
+      <footer class="app-footer">
+        <span id="completed-count">0 completed</span>
+        <button id="clear-completed" class="text-button" type="button">Clear completed</button>
+      </footer>
+    </section>
+    <p class="storage-note"><span aria-hidden="true">↳</span> Your tasks are saved locally in this browser.</p>
+  </main>
+
+  <template id="task-template">
+    <li class="task-item">
+      <label class="task-main">
+        <input class="complete-checkbox" type="checkbox">
+        <span class="checkmark" aria-hidden="true"></span>
+        <span class="task-title"></span>
+      </label>
+      <div class="task-actions">
+        <button class="icon-button edit-button" type="button" aria-label="Edit task">✎</button>
+        <button class="icon-button delete-button" type="button" aria-label="Delete task">×</button>
+      </div>
+    </li>
+  </template>
+
+  <script src="script.js"></script>
+</body>
+</html>
